@@ -1,10 +1,14 @@
 {
   "name": "ghost-bot",
   "version": "1.0.0",
-  "description": "My WhatsApp bot",
+  "description": "Powerful WhatsApp bot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "whatsapp-web.js": "^1.0.0",
+    "qrcode-terminal": "^0.12.0"
+  }
 }
