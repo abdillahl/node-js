@@ -1,4 +1,43 @@
-# This workflow will build and push a node.js application to an Azure Web App when a commit is pushed to your default branch.
+// Imports
+const qrcode = require('qrcode-terminal');
+const { Client } = require('whatsapp-web.js');
+
+// Create client
+const client = new Client();
+
+// Event: QR code ready
+client.on('qr', qr => {
+    qrcode.generate(qr, { small: true });
+    console.log('Scan this QR with WhatsApp to start the bot');
+});
+
+// Event: Bot ready
+client.on('ready', () => {
+    console.log('Ghost Bot is online!');
+});
+
+// Event: Message received
+client.on('message', msg => {
+
+    // Command: !ping
+    if(msg.body === '!ping') {
+        msg.reply('Pong!');
+    }
+
+    // Command: !help
+    if(msg.body === '!help') {
+        msg.reply('Available commands:\n!ping\n!help');
+    }
+
+    // Example: add more commands below
+    // if(msg.body === '!joke') {
+    //     msg.reply('Here is a joke...');
+    // }
+
+});
+
+// Initialize the bot
+client.initialize();# This workflow will build and push a node.js application to an Azure Web App when a commit is pushed to your default branch.
 #
 # This workflow assumes you have already created the target Azure App Service web app.
 # For instructions see https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs?tabs=linux&pivots=development-environment-cli
